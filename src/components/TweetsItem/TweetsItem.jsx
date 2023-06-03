@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { tweetsSlice } from 'redux/tweetsSlice';
+import { addFollowing, deleteFollowing } from 'redux/tweetsSlice';
 import { getIsFollowing } from 'redux/selectors';
+import { changeFollowers } from 'redux/operations';
 
 const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
   const [followersCount, setFollowersCount] = useState(followers);
@@ -12,11 +13,13 @@ const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
 
   const handleFollowing = () => {
     if (isFollowing) {
-      dispatch(tweetsSlice.deleteFollowing(id));
-      setFollowersCount(followersCount - 1);
+      dispatch(deleteFollowing(id));
+        setFollowersCount(followersCount - 1);
+          dispatch(changeFollowers({ id, followers: followers - 1 }));
     } else {
-      dispatch(tweetsSlice.addFollowing(id));
-      setFollowersCount(followersCount + 1);
+      dispatch(addFollowing(id));
+        setFollowersCount(followersCount + 1);
+         dispatch(changeFollowers({ id, followers: followers + 1 }));
     }
   };
 

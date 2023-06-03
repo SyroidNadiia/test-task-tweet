@@ -1,35 +1,61 @@
 import ButtonLoadMore from 'components/ButtonLoadMore/ButtonLoadMore';
+import GoBackBtn from 'components/GoBackButton/GoBackButton';
 import Loader from 'components/Loader/Loader';
 import TweetsList from 'components/TweetsList/TweetsList';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTweets } from 'redux/operations';
-import { getIsLoading } from 'redux/selectors';
+import { fetchTweets, fetchTweetsByPages } from 'redux/operations';
+import { getIsLoading, getTotalItems, getTweets } from 'redux/selectors';
+import { IoIosArrowRoundBack } from 'react-icons/io';
 
 const Tweets = () => {
-  const [page, setPage] = useState(1);
-  const isLoading = useSelector(getIsLoading);
-
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const totalItems = useSelector(getTotalItems);
 
-  useEffect(() => {
-    dispatch(fetchTweets(page));
-  }, [dispatch, page]);
+  const [page, setPage] = useState(1);
+  const tweets = useSelector(getTweets);
+  const [isShowButton, setShowButton] = useState(true);
+  const tweetsPerPage = 3;
+  const backLink = useRef('/');
+  const totalPages = Math.ceil(totalItems / tweetsPerPage);
 
   const onLoadMore = () => {
     setPage(prevState => prevState + 1);
   };
 
+  useEffect(() => {
+    dispatch(fetchTweets());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchTweetsByPages({ page, limit: tweetsPerPage }));
+  }, [dispatch, page]);
+
+  useEffect(() => {
+    if (tweets.length === 0 || page >= totalPages) {
+      setShowButton(false);
+    } else {
+      setShowButton(true);
+    }
+  }, [page, totalPages, tweets]);
+
+  useEffect(() => {
+    dispatch(fetchTweets());
+    backLink.current = '/';
+  }, [dispatch]);
+
   return (
     <>
-      <h2>Tweets</h2>
+      <GoBackBtn to={backLink.current}>
+        <IoIosArrowRoundBack /> Go back
+      </GoBackBtn>
       {isLoading && <Loader />}
       <TweetsList />
 
-      <ButtonLoadMore
-        isLoading={isLoading}
-        onLoadMore={onLoadMore}
-      ></ButtonLoadMore>
+      {isShowButton && (
+        <ButtonLoadMore isLoading={isLoading} onLoadMore={onLoadMore} />
+      )}
     </>
   );
 };

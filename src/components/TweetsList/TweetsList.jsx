@@ -8,7 +8,6 @@ const TweetsList = () => {
 
   return (
     <>
-      <div>TweetsList</div>
       <ul>
         {tweets.map(tweet => (
           <li key={tweet.id}>
