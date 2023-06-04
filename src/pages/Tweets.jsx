@@ -26,7 +26,7 @@ const Tweets = () => {
   const totalPages = Math.ceil(totalItems / tweetsPerPage);
 
   const onLoadMore = () => {
-    setPage(prevState => prevState + 1);
+     setPage(Math.ceil(tweets.length / tweetsPerPage) + 1);
   };
 
   useEffect(() => {
@@ -45,6 +45,8 @@ const Tweets = () => {
       setShowButton(true);
     }
   }, [page, totalPages, tweets]);
+
+  
 
   return (
     <StyledTweet>
