@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { List, ListItem } from '@mui/material';
 
-export const StyledList = styled(List)`
+export const StyledList = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,7 +8,7 @@ export const StyledList = styled(List)`
   gap: 30px;
 `;
 
-export const StyledListItem = styled(ListItem)`
+export const StyledListItem = styled.li`
   && {
     display: flex;
     justify-content: center;

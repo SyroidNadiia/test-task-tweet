@@ -4,6 +4,7 @@ import { addFollowing, deleteFollowing } from 'redux/tweetsSlice';
 import { getIsFollowing } from 'redux/selectors';
 import { changeFollowers } from 'redux/operations';
 import follow from '../../images/picture.png';
+import logo from '../../images/Logo.png';
 import {
   StyledArticle,
   StyledWrapper,
@@ -12,7 +13,8 @@ import {
   Count,
   BtnFollow,
   BtnFollowing,
-  StyledImg,
+  StyledImgFollow,
+  StyledImgLogo,
 } from './TweetsItem.styles';
 
 const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
@@ -36,14 +38,17 @@ const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
 
   return (
     <StyledArticle>
-      <StyledImg src={follow} alt="Image follow" />
-      <StyledWrapper className="avatar-wrapper">
+      <StyledImgLogo src={logo} alt="Image logo" />
+      <StyledImgFollow src={follow} alt="Image follow" />
+      <StyledWrapper>
         <StyledAvatar alt={user} src={avatar} sx={{ width: 62, height: 62 }} />
       </StyledWrapper>
 
-      <StyledInfo className="user-info">
-        <Count variant="p">{tweets} TWEETS</Count>
-        <Count variant="p">{followersCount} FOLLOWERS</Count>
+      <StyledInfo>
+        <Count variant="p">{tweets.toLocaleString('en-US')} TWEETS</Count>
+        <Count variant="p">
+          {followersCount.toLocaleString('en-US')} FOLLOWERS
+        </Count>
       </StyledInfo>
       {isFollowing ? (
         <BtnFollowing onClick={handleFollowing}>FOLLOWING</BtnFollowing>
