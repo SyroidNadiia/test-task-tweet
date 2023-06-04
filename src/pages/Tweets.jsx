@@ -1,14 +1,15 @@
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { IoIosArrowRoundBack } from 'react-icons/io';
+
+import { fetchTweets, fetchTweetsByPages } from 'redux/operations';
+import { getIsLoading, getTotalItems, getTweets } from 'redux/selectors';
 import ButtonLoadMore from 'components/ButtonLoadMore/ButtonLoadMore';
 import GoBackBtn from 'components/GoBackButton/GoBackButton';
 import Loader from 'components/Loader/Loader';
 import TweetsList from 'components/TweetsList/TweetsList';
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTweets, fetchTweetsByPages } from 'redux/operations';
-import { getIsLoading, getTotalItems, getTweets } from 'redux/selectors';
-import { IoIosArrowRoundBack } from 'react-icons/io';
-import Filter from '../components/Filter/Filter';
-import { useLocation } from 'react-router-dom';
+import Filter from 'components/Filter/Filter';
 import { StyledTweet } from './sharedStyles.styles';
 
 const Tweets = () => {

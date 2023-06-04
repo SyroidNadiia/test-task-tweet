@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import styled from 'styled-components';
 
 export const StyledHome = styled.div`
@@ -10,4 +11,13 @@ export const StyledHome = styled.div`
 
 export const StyledTweet = styled.div`
   padding: 20px 0;
+`;
+
+export const StyledTypography = styled(Typography)`
+  text-align: center;
+`;
+
+export const StyledImg = styled.img`
+  max-width: 500px;
+  max-height: 500px;
 `;

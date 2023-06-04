@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addFollowing, deleteFollowing } from 'redux/tweetsSlice';
 import { getIsFollowing } from 'redux/selectors';
 import { changeFollowers } from 'redux/operations';
-import follow from '../../images/picture.png';
-import logo from '../../images/Logo.png';
+import follow from 'images/picture.png';
+import logo from 'images/Logo.png';
+import defaultAvatar from 'images/defaultAvatar.png';
 import {
   StyledArticle,
   StyledWrapper,
@@ -36,12 +38,21 @@ const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
     }
   };
 
+  const handleImageError = event => {
+    event.target.src = defaultAvatar;
+  };
+
   return (
     <StyledArticle>
       <StyledImgLogo src={logo} alt="Image logo" />
       <StyledImgFollow src={follow} alt="Image follow" />
       <StyledWrapper>
-        <StyledAvatar alt={user} src={avatar} sx={{ width: 62, height: 62 }} />
+        <StyledAvatar
+          alt={user}
+          src={avatar}
+          sx={{ width: 62, height: 62 }}
+          onError={handleImageError}
+        />
       </StyledWrapper>
 
       <StyledInfo>
@@ -60,3 +71,11 @@ const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
 };
 
 export default TweetsItem;
+
+TweetsItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  tweets: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+};

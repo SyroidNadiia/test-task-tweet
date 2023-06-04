@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledLink } from './GoBackButton.stules';
+import { StyledLink } from './GoBackButton.styles';
 
 const GoBackBtn = ({ to, children }) => {
   return <StyledLink to={to}>{children}</StyledLink>;
