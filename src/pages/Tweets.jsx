@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTweets, fetchTweetsByPages } from 'redux/operations';
 import { getIsLoading, getTotalItems, getTweets } from 'redux/selectors';
 import { IoIosArrowRoundBack } from 'react-icons/io';
+import Filter from '../components/Filter/Filter';
 
 const Tweets = () => {
   const dispatch = useDispatch();
@@ -25,8 +26,8 @@ const Tweets = () => {
   };
 
   useEffect(() => {
-      dispatch(fetchTweets());
-       backLink.current = '/';
+    dispatch(fetchTweets());
+    backLink.current = '/';
   }, [dispatch]);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const Tweets = () => {
       <GoBackBtn to={backLink.current}>
         <IoIosArrowRoundBack /> Go back
       </GoBackBtn>
+      <Filter />
       {isLoading && <Loader />}
       <TweetsList />
 

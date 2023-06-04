@@ -1,16 +1,17 @@
 import TweetsItem from 'components/TweetsItem/TweetsItem';
 import { useSelector } from 'react-redux';
-import { getTweets } from 'redux/selectors';
+import { selectVisibleTweets } from 'redux/selectors';
 import { StyledList, StyledListItem } from './TweetsList.styles';
 
 const TweetsList = () => {
-  const tweets = useSelector(getTweets);
-  console.log(tweets);
+  // const tweets = useSelector(getTweets);
+  const visibleTweets = useSelector(selectVisibleTweets);
+  //   console.log(tweets);
 
   return (
     <>
       <StyledList>
-        {tweets.map(tweet => (
+        {visibleTweets.map(tweet => (
           <StyledListItem key={tweet.id}>
             <TweetsItem {...tweet} />
           </StyledListItem>

@@ -1,4 +1,5 @@
-// import { createSelector } from '@reduxjs/toolkit';
+import { createSelector } from '@reduxjs/toolkit';
+import { statusFilters } from './constants';
 
 export const getTweets = state => state.tweets.items;
 
@@ -10,17 +11,18 @@ export const getTotalItems = state => state.tweets.totalItems;
 
 export const getError = state => state.tweets.error;
 
-export const getFilter = state => state.filter;
+export const getStatusFilter = state => state.filters.status;
 
-// export const getFilteredContacts = createSelector(
-//   [getTweets, getFilter],
-//   (contacts, filter) => {
-//     if (!Array.isArray(contacts)) {
-//       return [];
-//     }
-
-//     return contacts.filter(contact =>
-//       contact.name.toLowerCase().includes(filter.toLowerCase())
-//     );
-//   }
-// );
+export const selectVisibleTweets = createSelector(
+  [getTweets, getStatusFilter, getIsFollowing],
+  (tweets, statusFilter, isFollowing) => {
+    switch (statusFilter) {
+      case statusFilters.follow:
+        return tweets.filter(tweet => !isFollowing.includes(tweet.id));
+      case statusFilters.followings:
+        return tweets.filter(tweet => isFollowing.includes(tweet.id));
+      default:
+        return tweets;
+    }
+  }
+);

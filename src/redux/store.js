@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { tweetsReducer } from './tweetsSlice';
+import { filtersReducer } from './filtersSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -21,7 +22,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     tweets: persistReducer(authPersistConfig, tweetsReducer),
-    filter: null,
+    filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
