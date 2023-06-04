@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import { BtnLoadMore } from './ButtonLoadMore.styles';
 
 const ButtonLoadMore = ({ isLoading, onLoadMore }) => {
   return (
-    <button  onClick={onLoadMore}>
+    <BtnLoadMore  onClick={onLoadMore}>
       {isLoading ? 'Loading...' : 'Load More'}
-    </button>
+    </BtnLoadMore>
   );
 };
 

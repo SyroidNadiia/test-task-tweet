@@ -25,7 +25,8 @@ const Tweets = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchTweets());
+      dispatch(fetchTweets());
+       backLink.current = '/';
   }, [dispatch]);
 
   useEffect(() => {
@@ -39,11 +40,6 @@ const Tweets = () => {
       setShowButton(true);
     }
   }, [page, totalPages, tweets]);
-
-  useEffect(() => {
-    dispatch(fetchTweets());
-    backLink.current = '/';
-  }, [dispatch]);
 
   return (
     <>
