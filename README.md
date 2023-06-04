@@ -1,74 +1,72 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+TEST-TASK-TWEET
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Cards User Project is a fully functional web application that implements
+user cards based on a provided design. It allows users to interact with the
+cards by clicking the "Follow" button, which updates the button text to
+"Following" and changes its color. Additionally, the follower count increases by
+one with each button click.
 
-## Available Scripts
+One of the key features of the project is the preservation of user interactions
+even after page refresh. This means that if a user clicks the "Follow" button
+and then refreshes the page, the button will remain in the "Following" state
+with the corresponding color, and the follower count will not reset to the
+initial value.
 
-In the project directory, you can run:
+The backend for the project was developed using the UI service mockapi.io. A
+"users" resource was created with properties such as id, user, tweets,
+followers, and avatar. The avatars were represented by separate URLs in the
+"avatar" property.
 
-### `npm start`
+To enhance user experience, pagination was implemented, allowing users to view
+three tweets per page, with additional tweets loading when the "Load More"
+button is clicked.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project also includes routing functionality using React Router. The
+following routes were set up:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+"/" - Home component, serving as the landing page. "/tweets" - Tweets component
+for displaying tweets. For additional functionality, a "Back" button was added
+on the tweets page to allow users to navigate back to the home page.
 
-### `npm test`
+Bonus Task: As an extra feature, filtering was implemented using a dropdown menu
+with three options: "show all," "follow," and "followings." This enables users
+to filter tweets based on their follow status.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Installation To install and run the project locally, follow these steps:
 
-### `npm run build`
+Clone the repository: git clone <repository-url> Navigate to the project
+directory: cd <project-directory> Install dependencies: npm install Start the
+development server: npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Usage Once the project is set up locally, follow these steps to use the
+application:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Access the application through the provided URL or local development server.
+Navigate through the different pages using the navigation links. Interact with
+the user cards by clicking the "Follow" button and observe the changes in button
+text, color, and follower count. Refresh the page and verify that the user
+interaction state is preserved.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Technologies Used The Cards User Project is built using the following
+technologies:
 
-### `npm run eject`
+React: A JavaScript library for building user interfaces. React Router: A
+library for handling routing in React applications. CSS/SCSS: Used for styling
+the components. Emotion: A library for styling React components with CSS-in-JS.
+Material-UI: A popular UI component library for React applications. Redux
+Toolkit: A library that simplifies the management of state in React
+applications. Axios: A library for making HTTP requests from the browser. React
+Redux: A library for integrating Redux with React applications. Styled
+Components: A library for styling React components with CSS-in-JS. Redux
+Persist: A library for persisting Redux state in the browser's storage. These
+technologies were utilized to develop and enhance the functionality and user
+experience of the Cards User Project.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Contributing Contributions to the Cards User Project are welcome and
+appreciated. If you would like to contribute, please follow these steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# test-task-tweet
->>>>>>> c5da691534191811b617a80b651130e95db76e64
+Fork the repository. Create a new branch: git checkout -b <branch-name> Make
+your changes and commit them: git commit -m '<commit-message>' Push to the
+original branch: git push origin <branch-name> Create a pull request on GitHub.
+Please ensure that your code follows the project's coding conventions and style
+guide.

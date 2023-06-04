@@ -7,3 +7,7 @@ export const StyledHome = styled.div`
   gap: 20px;
   margin-top: 80px;
 `;
+
+export const StyledTweet = styled.div`
+  padding: 20px 0;
+`;

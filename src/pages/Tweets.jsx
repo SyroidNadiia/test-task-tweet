@@ -8,6 +8,8 @@ import { fetchTweets, fetchTweetsByPages } from 'redux/operations';
 import { getIsLoading, getTotalItems, getTweets } from 'redux/selectors';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import Filter from '../components/Filter/Filter';
+import { useLocation } from 'react-router-dom';
+import { StyledTweet } from './sharedStyles.styles';
 
 const Tweets = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,8 @@ const Tweets = () => {
   const tweets = useSelector(getTweets);
   const [isShowButton, setShowButton] = useState(true);
   const tweetsPerPage = 3;
-  const backLink = useRef('/');
+  const location = useLocation();
+  const backLink = useRef(location.state?.from ?? '/');
   const totalPages = Math.ceil(totalItems / tweetsPerPage);
 
   const onLoadMore = () => {
@@ -43,7 +46,7 @@ const Tweets = () => {
   }, [page, totalPages, tweets]);
 
   return (
-    <>
+    <StyledTweet>
       <GoBackBtn to={backLink.current}>
         <IoIosArrowRoundBack /> Go back
       </GoBackBtn>
@@ -54,7 +57,7 @@ const Tweets = () => {
       {isShowButton && (
         <ButtonLoadMore isLoading={isLoading} onLoadMore={onLoadMore} />
       )}
-    </>
+    </StyledTweet>
   );
 };
 export default Tweets;
