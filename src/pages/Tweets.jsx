@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 
 import { fetchTweets, fetchTweetsByPages } from 'redux/operations';
-import { getIsLoading, getTotalItems, getTweets } from 'redux/selectors';
+import {  getIsFollowing, getIsLoading, getTotalItems, getTweets, selectVisibleTweets } from 'redux/selectors';
 import ButtonLoadMore from 'components/ButtonLoadMore/ButtonLoadMore';
 import GoBackBtn from 'components/GoBackButton/GoBackButton';
 import Loader from 'components/Loader/Loader';
@@ -13,9 +13,15 @@ import Filter from 'components/Filter/Filter';
 import { StyledTweet } from './sharedStyles.styles';
 
 const Tweets = () => {
+  useEffect(() => {
+    document.title = 'Tweets';
+  }, []);
+
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
+  const totalFollowing = useSelector(getIsFollowing);
   const totalItems = useSelector(getTotalItems);
+  const visibleTweets = useSelector(selectVisibleTweets);
 
   const [page, setPage] = useState(1);
   const tweets = useSelector(getTweets);
@@ -26,7 +32,7 @@ const Tweets = () => {
   const totalPages = Math.ceil(totalItems / tweetsPerPage);
 
   const onLoadMore = () => {
-     setPage(Math.ceil(tweets.length / tweetsPerPage) + 1);
+    setPage(Math.ceil(tweets.length / tweetsPerPage) + 1);
   };
 
   useEffect(() => {
@@ -39,14 +45,17 @@ const Tweets = () => {
   }, [dispatch, page]);
 
   useEffect(() => {
-    if (tweets.length === 0 || page >= totalPages) {
+    if (
+      tweets.length === 0 ||
+      page >= totalPages ||
+      visibleTweets.length === 0 ||
+      totalFollowing.length === visibleTweets.length
+    ) {
       setShowButton(false);
     } else {
       setShowButton(true);
     }
-  }, [page, totalPages, tweets]);
-
-  
+  }, [page, totalPages, tweets, visibleTweets, totalFollowing]);
 
   return (
     <StyledTweet>

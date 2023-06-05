@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import viralTweet from 'images/viral_tweet.png';
 import { StyledHome, StyledImg, StyledTypography } from './sharedStyles.styles';
 
 export default function Home() {
+
+  useEffect(() => {
+    document.title = 'Home';
+  }, []);
+
   return (
     <StyledHome>
       <StyledTypography variant="h2">
