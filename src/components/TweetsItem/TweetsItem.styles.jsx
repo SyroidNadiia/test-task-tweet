@@ -99,15 +99,23 @@ const BaseButton = styled.button`
 
 export const BtnFollow = styled(BaseButton)`
   background-color: #ebd8ff;
+
+  &:hover,
+  &:focus {
+    background-color: #a370ff;
+  }
 `;
 
 export const BtnFollowing = styled(BaseButton)`
   background-color: #5cd3a8;
+
+  &:hover,
+  &:focus {
+    background-color: #35a181;
+  }
 `;
 
 export const StyledImgFollow = styled.img`
-  width: 308px;
-  height: 168px;
   position: absolute;
   top: 28px;
   left: 50%;
@@ -115,7 +123,5 @@ export const StyledImgFollow = styled.img`
 `;
 
 export const StyledImgLogo = styled.img`
-  width: 76px;
-  height: 22px;
   margin-right: auto;
 `;

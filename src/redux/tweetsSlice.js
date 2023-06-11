@@ -74,6 +74,3 @@ export const tweetsSlice = createSlice({
 export const tweetsReducer = tweetsSlice.reducer;
 export const { addFollowing, deleteFollowing } = tweetsSlice.actions;
 
-// const formattedNumber = followers
-//   .toString()
-//   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');

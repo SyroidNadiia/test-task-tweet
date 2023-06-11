@@ -17,7 +17,3 @@ export const StyledTypography = styled(Typography)`
   text-align: center;
 `;
 
-export const StyledImg = styled.img`
-  max-width: 500px;
-  max-height: 500px;
-`;

@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import viralTweet from 'images/viral_tweet.png';
-import { StyledHome, StyledImg, StyledTypography } from './sharedStyles.styles';
+import { StyledHome, StyledTypography } from './sharedStyles.styles';
 
 export default function Home() {
-
   useEffect(() => {
     document.title = 'Home';
   }, []);
@@ -18,7 +17,7 @@ export default function Home() {
         Explore the Tweets page to discover the latest updates, trending topics,
         and engaging conversations.
       </StyledTypography>
-      <StyledImg src={viralTweet} alt="Viral Tweet" />
+      <img src={viralTweet} alt="Viral Tweet" width={500} height={500} />
     </StyledHome>
   );
 }

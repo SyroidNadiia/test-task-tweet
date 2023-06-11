@@ -44,8 +44,8 @@ const TweetsItem = ({ id, user, avatar, tweets, followers }) => {
 
   return (
     <StyledArticle>
-      <StyledImgLogo src={logo} alt="Image logo" />
-      <StyledImgFollow src={follow} alt="Image follow" />
+      <StyledImgLogo src={logo} alt="Image logo" width={76} height={22} />
+      <StyledImgFollow src={follow} alt="Image follow" width={308} height={168}/>
       <StyledWrapper>
         <StyledAvatar
           alt={user}
